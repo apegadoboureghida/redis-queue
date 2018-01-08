@@ -24,8 +24,8 @@ class RedisQueue():
             request = self.client.lpop(queue)
             if request:
                 task_id = str(request)
-                assert len(task_id) == 11
-                task = json.loads(self.client.get('model_' + task_id))
+
+                task = json.loads(self.client.get(self.prefix + task_id))
 
                 if task["status"] == "pending":
                     task["status"] = "processing"
@@ -47,7 +47,7 @@ class RedisQueue():
         task["status"] = "completed"
         self.client.set(self.prefix + task[self.task_name], json.dumps(task))
         if self.logger:
-            self.logger.info("--> Task done for %s: %s", self.task_name, task)
+            self.logger.info("--> Task done for %s: %s", self.task_name, task[self.task_name])
 
     def abort(self, task):
         """Set the task as aborted."""
@@ -58,4 +58,4 @@ class RedisQueue():
         self.client.set(self.prefix + task[self.task_name], json.dumps(task))
         if self.logger:
             self.logger.info("--> Task *aborted* for %s: %s",
-                        self.task_name, task)
+                        self.task_name, task[self.task_name])

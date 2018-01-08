@@ -18,17 +18,17 @@ install_requires = [x.strip() for x in all_reqs if 'git+' not in x]
 dependency_links = [x.strip().replace('git+', '') for x in all_reqs if x.startswith('git+')]
 
 setup(
-    name='redis-queue',
+    name='redis-task-queue',
     version=__version__,
     description='A python package that can be installed with pip.',
     long_description=long_description,
-    url='https://github.com/apegadoboureghida/redis-queue',
-    download_url='https://github.com/apegadoboureghida/redis-queue/tarball/' + __version__,
+    url='https://github.com/apegadoboureghida/redis-task-queue',
+    download_url='https://github.com/apegadoboureghida/redis-task-queue/tarball/' + __version__,
     license='BSD',
     classifiers=[
       'Development Status :: 3 - Alpha',
       'Intended Audience :: Developers',
-      'Programming Language :: Python :: 2.x',
+      'Programming Language :: Python :: 2.7',
     ],
     keywords='',
     packages=find_packages(exclude=['docs', 'tests*']),

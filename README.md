@@ -1,4 +1,4 @@
-redis-queue
+redis-task-queue
 ===============================
 
 version number: 0.0.1
@@ -14,14 +14,14 @@ Installation / Usage
 
 To install use pip:
 
-    $ pip install redis-queue
+    $ pip install redis-task-queue
 
 
 Or clone the repo:
 
-    $ git clone https://github.com/apegadoboureghida/redis-queue.git
+    $ git clone https://github.com/apegadoboureghida/redis-task-queue.git
     $ python setup.py install
-    
+
 Contributing
 ------------
 

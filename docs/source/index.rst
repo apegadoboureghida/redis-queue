@@ -1,4 +1,4 @@
-Welcome to redis-queue's documentation!
+Welcome to redis-task-queue's documentation!
 =========================================
 
 Contents:
