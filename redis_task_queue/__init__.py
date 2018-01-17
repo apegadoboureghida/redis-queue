@@ -59,7 +59,7 @@ class RedisQueue():
         if self.logger:
             self.logger.info("--> Task in progress for %s: %s", self.task_name, task[self.task_name])
 
-    def abort(self, task):
+    def abort(self, task, data=None):
         """Set the task as aborted."""
 
         task["data"] = None
