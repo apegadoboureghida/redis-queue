@@ -59,13 +59,13 @@ class RedisQueue():
         if self.logger:
             self.logger.info("--> Task in progress for %s: %s", self.task_name, task[self.task_name])
 
-    def abort(self, task, data=None):
+    def abort(self, task, data=None, expiration=3600):
         """Set the task as aborted."""
 
         task["data"] = None
         task["completed_on"] = None
         task["status"] = "aborted"
-        self.client.set(self.prefix + task[self.task_name], json.dumps(task))
+        self.client.setex(self.prefix + task[self.task_name], json.dumps(task), expiration)
         if self.logger:
             self.logger.info("--> Task *aborted* for %s: %s",
                         self.task_name, task[self.task_name])
