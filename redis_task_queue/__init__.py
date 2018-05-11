@@ -23,7 +23,8 @@ class RedisQueue():
         for queue in self.request_queues:
             request = self.client.lpop(queue)
             if request:
-                task_id = str(request)
+                # decode for python 3
+                task_id = request.decode("utf-8", "replace")
 
                 task = json.loads(self.client.get(self.prefix + task_id))
 
